@@ -4,7 +4,7 @@ before_script:
   - export CONDA_BASE=$(conda info --base)
   - source $CONDA_BASE/etc/profile.d/conda.sh
   - conda env create -f environment.yaml
-  - conda activate test
+  - conda activate modern-cmake
 
 build:
   stage: build
