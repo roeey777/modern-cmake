@@ -5,7 +5,17 @@
 #include <fact/fact.hpp>
 
 TEST_GROUP(FactTests)
-{};
+{
+  void setup()
+  {
+    MemoryLeakWarningPlugin::turnOffNewDeleteOverloads();
+  }
+
+  void teardown()
+  {
+    MemoryLeakWarningPlugin::turnOnNewDeleteOverloads();
+  }
+};
 
 TEST(FactTests, FactorialCorrectness)
 {
