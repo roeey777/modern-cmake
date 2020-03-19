@@ -1,0 +1,24 @@
+image: continuumio/miniconda3:latest
+
+before_script:
+  - export CONDA_BASE=$(conda info --base)
+  - source $CONDA_BASE/etc/profile.d/conda.sh
+  - conda env create -f environment.yaml
+  - conda activate test
+
+build:
+  stage: build
+  script:
+    - cmake -S . -B build/upstream -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_CPPCHECK=ON -DENABLE_TESTING=ON
+    - cmake --build build/upstream
+    - cd build/upstream && ctest -V
+
+# Test that the library is installed correctly and can be found by cmake
+downstream-test:
+  stage: test
+  script:
+    - cmake -S . -B build/upstream -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_TESTING=OFF
+    - cmake --build build/upstream --target install
+    - cmake -S test/downstream -B build/downstream -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX
+    - cmake --build build/downstream
+    - cd build/downstream && ctest -V .
