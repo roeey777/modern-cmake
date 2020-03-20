@@ -1,24 +1,48 @@
 image: continuumio/miniconda3:latest
 
+stages:
+  - bootstrap
+  - build
+  - static-check
+  - test
+  - deploy
+
 before_script:
   - export CONDA_BASE=$(conda info --base)
   - source $CONDA_BASE/etc/profile.d/conda.sh
   - conda env create
   - conda activate modern-cmake
 
+just-configure:
+  stage: bootstrap
+  script:
+    - cmake -S . -B build/bootstrap  -Wdev -Werror=dev
+
 build:
   stage: build
   script:
-    - cmake -S . -B build/upstream -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_CPPCHECK=ON -DENABLE_TESTING=ON
-    - cmake --build build/upstream
-    - cd build/upstream && ctest -V
+    - cmake -S . -B build/build  -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX
+    - cmake --build build/build --target Fact
+
+static-check:
+  stage: static-check
+  script:
+    - cmake -S . -B build/static -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_CPPCHECK=ON
+    - cmake --build build/static
+
+build-unit-tests:
+  stage: test
+  script:
+    - cmake -S . -B build/tests  -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_CPPCHECK=ON -DENABLE_TESTING=ON
+    - cmake --build build/tests
+    - cd build/tests && ctest -V
 
 # Test that the library is installed correctly and can be found by cmake
 downstream-test:
-  stage: test
+  stage: deploy
   script:
-    - cmake -S . -B build/upstream -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_TESTING=OFF
+    - cmake -S . -B build/upstream  -Wdev -Werror=dev -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_TESTING=OFF
     - cmake --build build/upstream --target install
-    - cmake -S test/downstream -B build/downstream -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX
+    - cmake -S test/downstream -B build/downstream  -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX
     - cmake --build build/downstream
     - cd build/downstream && ctest -V .
