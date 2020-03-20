@@ -1,4 +1,4 @@
-# include <fact/fact.hpp>
+#include <fact/fact.hpp>
 #include <spdlog/spdlog.h>
 
 unsigned int factorial(unsigned int x)
