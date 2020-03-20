@@ -15,7 +15,7 @@ This repo contains a simple C++ library: `Fact`
 The `Fact` library has only one function:
 
 ```c++
-unsigned in factorial(unsigned int);
+unsigned int factorial(unsigned int);
 ```
 
 which computes the factorial of a certain number.
@@ -34,7 +34,7 @@ Fork this repository. you will work against your own fork on a topic branch, and
 ### Installing `conda`
 **Use `conda` for this exercise**. It is a great tool for setting up an isolated
 development environment with all the dependencies for your project.
-I recomment using [miniconda](https://docs.conda.io/en/latest/miniconda.html).
+I recommend using [miniconda](https://docs.conda.io/en/latest/miniconda.html).
 
 Install `miniconda` and verify that it is working:
 ```sh
@@ -42,10 +42,10 @@ conda -V
 ```
 
 ### Creating development environment
-For your convinience, this project contains `environment.yaml` file, which
-describes the environment ncessary for this project. You can create the environment by running the following command:
+For your convenience, this project contains `environment.yml` file, which
+describes the environment necessary for this project. You can create the environment by running the following command:
 ```sh
-conda env create -f environment.yaml
+conda env create
 ```
 
 The environment name will be `modern-cmake` and you can activate your environment using:
