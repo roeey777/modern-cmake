@@ -8,6 +8,7 @@ stages:
   - deploy
 
 before_script:
+  - apt-get install -y gcc g++
   - export CONDA_BASE=$(conda info --base)
   - source $CONDA_BASE/etc/profile.d/conda.sh
   - conda env create

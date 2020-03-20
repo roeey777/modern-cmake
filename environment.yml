@@ -5,7 +5,6 @@ channels:
   - defaults
 
 dependencies:
-  - compilers
   - cmake
   - cpputest
   - spdlog
