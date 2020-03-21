@@ -35,7 +35,7 @@ build-unit-tests:
   stage: test
   script:
     - cmake -S . -B build/tests  -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_CPPCHECK=ON -DENABLE_TESTING=ON
-    - cmake --build build/tests
+    - cmake --build build/tests --target FactTests
     - cd build/tests && ctest -V
 
 # Test that the library is installed correctly and can be found by cmake

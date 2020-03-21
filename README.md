@@ -29,7 +29,18 @@ However, this repo does not have any build-system support, so all this goodies c
 
 ## Getting started
 ### Create a fork
-Fork this repository. you will work against your own fork on a topic branch, and when you'll be ready - submit a Pull Request.
+Fork this repository. you will work on your own fork.
+
+Clone your fork on your development machine.
+
+### Create a new branch
+In your local repo, create a new branch on top of master:
+
+```sh
+git checkout master
+git pull
+git checkout -b solution/<your name>
+```
 
 ### Installing `conda`
 **Use `conda` for this exercise**. It is a great tool for setting up an isolated
@@ -52,28 +63,58 @@ The environment name will be `modern-cmake` and you can activate your environmen
 ```sh
 conda activate modern-cmake
 ```
-### Reproduce the CI failure
-Look at the `.gitlab-ci.yml` file. It contains two jobs:
-1. `build` - which builds the library, run static checks and unit-tests.
-2. `downstream-test` - which installs the library and try to link a simple
-executable against it.
 
-Each job contains a `script` section, which contains the actual steps to perform
-the job.
-
-Let's try to run the `build` job commands as they appear in `.gitlab-ci.yml`:
-```sh
-cmake -S . -B build/upstream -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_CPPCHECK=ON -DENABLE_TESTING=ON
-cmake --build build/upstream
-cd build/upstream && ctest -V
-```
-
-It should fail immediately since you don't have a top-level `CMakeLists.txt` file.
-
-## Get to work
+## How to submit your work
 1. Create a topic branch `solution/<your name>`
-2. Make the necessary changes so that the CI passes on your branch.
-3. When done, submit a Merge Request.
+2. Follow the insctructions below about the tasks required at each stage.
+3. Once you finished the first stage, submit a Merge Request for
+your branch. Prefix your MR title with `WIP:`. This will allow the
+tutors to perform CR on your code.
+4. As you move through the stages, more jobs in the CI pipeline will
+become green, until you complete the exercise.
 
-**Notice:** You SHOULD NOT change the code or the `.gitlab-ci.yml`.
+**Notice:** You SHOULD NOT change the code or the `.gitlab-ci.yml`
+or the source files.
 All you have to do is create the necessary CMake files that will cause the CI to work.
+
+
+## Exercise Stages
+### Stage 1: basic project
+In the first stage all you have to do is create the simplest valid
+CMakeLists.txt file that defines a project. It doesn't matter what the project
+name is.
+
+### Stage 2: Build the library
+In this stage you will write the necessary CMake files to actually compile the
+library.
+
+1. Create a target called `Fact`. It should be a library of course.
+2. The target is composed of a single source file, `src/fact.cpp`
+3. Make sure that the target has the proper include directory (Notice that
+`fact.cpp` includes `fact/fact.hpp`)
+4. Make sure your target is linked against `spdlog` which is a
+**build dependency** of `Fact`. `spdlog` is installed in your conda environment
+already. All you have to do is *find* it in your CMake file, and set it as a
+dependency of `Fact`.
+
+### Stage 3: Unit tests
+There are some unit tests written in `test/tests.cpp`. These tests
+are using the `CppUTest` test framework.
+
+1. Create an project-level option for compiling the unit-tests. It
+shold be `ON` by default.
+2. Add an executable target for `tests.cpp`. The target must be
+called `FactTests`.
+3. Add `CppUTest` as a **build dependency** for `FactTests` (as you
+already know - you have to *find* it).
+
+### Stage 4: Installation
+This is by far the hardest part. In this stage you will write installation rules that will:
+1. Install your library - put the compiled `.a`/`.so` and the public
+header in the proper location.
+2. **Export** your target so that other developers will be able to find your library including all of its dependency after installation.
+
+I recommend reading [Its time to do CMake right](https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/)
+and to take a look at [Jason Turner's cpp_starter_project](https://github.com/lefticus/cpp_starter_project).
+
+## Good Luck!
