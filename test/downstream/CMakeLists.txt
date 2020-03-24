@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 project(downstream VERSION 1.0 LANGUAGES CXX)
 
-find_package(Fact REQUIRED)
+find_package(Fact 1.0.0 REQUIRED)
 add_executable(downstream main.cpp)
 target_link_libraries(downstream PRIVATE Fact::Fact)
 
