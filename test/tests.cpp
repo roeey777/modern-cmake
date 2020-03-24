@@ -19,6 +19,7 @@ TEST_GROUP(FactTests)
 
 TEST(FactTests, FactorialCorrectness)
 {
+  CHECK_EQUAL(factorial(0), 1);
   CHECK_EQUAL(factorial(1), 1);
   CHECK_EQUAL(factorial(2), 2);
   CHECK_EQUAL(factorial(3), 6);
