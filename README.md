@@ -102,7 +102,7 @@ There are some unit tests written in `test/tests.cpp`. These tests
 are using the `CppUTest` test framework.
 
 1. Create an project-level option for compiling the unit-tests. It
-shold be `ON` by default.
+should be `ON` by default.
 2. Add an executable target for `tests.cpp`. The target must be
 called `FactTests`.
 3. Add `CppUTest` as a **build dependency** for `FactTests` (as you
