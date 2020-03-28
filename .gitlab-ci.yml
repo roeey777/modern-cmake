@@ -36,7 +36,7 @@ build-unit-tests:
   script:
     - cmake -S . -B build/tests  -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_CPPCHECK=ON -DENABLE_TESTING=ON
     - cmake --build build/tests --target FactTests
-    - cd build/tests && ctest -V
+    - cd build/tests && ctest -V --no-tests=error
 
 # Test that the library is installed correctly and can be found by cmake
 downstream-test:
@@ -46,4 +46,4 @@ downstream-test:
     - cmake --build build/upstream --target install
     - cmake -S test/downstream -B build/downstream  -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX
     - cmake --build build/downstream
-    - cd build/downstream && ctest -V .
+    - cd build/downstream && ctest -V --no-tests=error .
