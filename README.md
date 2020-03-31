@@ -29,9 +29,9 @@ However, this repo does not have any build-system support, so all this goodies c
 
 ## Getting started
 ### Create a fork
-Fork this repository. you will work on your own fork.
-
+Fork this repository. You will work on your own fork.
 Clone your fork on your development machine.
+Notice the excercise might change, so it is recommended to allow [mirroring](https://about.gitlab.com/blog/2016/12/01/how-to-keep-your-fork-up-to-date-with-its-origin/).
 
 ### Create a new branch
 In your local repo, create a new branch on top of master:
@@ -46,7 +46,6 @@ git checkout -b solution/<your name>
 **Use `conda` for this exercise**. It is a great tool for setting up an isolated
 development environment with all the dependencies for your project.
 I recommend using [miniconda](https://docs.conda.io/en/latest/miniconda.html).
-
 Install `miniconda` and verify that it is working:
 ```sh
 conda -V
@@ -79,6 +78,12 @@ All you have to do is create the necessary CMake files that will cause the CI to
 
 
 ## Exercise Stages
+### Stage 0: Recommended reading
+Since the CMake documentation might be too obscure for novel CMakers as yourself, 
+I recommend reading [Its time to do CMake right](https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/). 
+This will get you through Stages 1-3, solving them using the modern features of CMake.
+If you're up to more reading, take a look at [Jason Turner's cpp_starter_project](https://github.com/lefticus/cpp_starter_project).
+
 ### Stage 1: basic project
 In the first stage all you have to do is create the simplest valid
 CMakeLists.txt file that defines a project. It doesn't matter what the project
@@ -110,11 +115,13 @@ already know - you have to *find* it).
 
 ### Stage 4: Installation
 This is by far the hardest part. In this stage you will write installation rules that will:
-1. Install your library - put the compiled `.a`/`.so` and the public
-header in the proper location.
+1. Install your library - put the compiled `.a`/`.so` and the public header in the proper location.
 2. **Export** your target so that other developers will be able to find your library including all of its dependency after installation.
+    1. CMake uses find_package(), in order to find your package you have to create a CMakeConfig.make file (hint: should be names FactConfig.cmake). 
+    2. Together with the recommended reading you may use the example found in the last paragraph in the CMake [doc](https://cmake.org/cmake/help/latest/module/CMakePackageConfigHelpers.html).
+3. Notice The CMakeLists.txt file in the downstream folder, it uses a certain Namespace for your targert, you should be using the same Namespace. As for cpp programmaing, target namespaces allow multiple developers create targets with the same name (E.G. Steam::Fact, Async::Fact).
 
-I recommend reading [Its time to do CMake right](https://pabloariasal.github.io/2018/02/19/its-time-to-do-cmake-right/)
-and to take a look at [Jason Turner's cpp_starter_project](https://github.com/lefticus/cpp_starter_project).
+
+
 
 ## Good Luck!
