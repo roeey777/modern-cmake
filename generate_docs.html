@@ -14,6 +14,7 @@
       <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
 
   
+    <link rel="canonical" href="https://roeey777.github.io/modern-cmake/generate_docs.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -112,20 +113,23 @@ You can inspect it as follows:</p>
 </section>
 <section id="publishing-the-documentation-to-github-pages">
 <h2>Publishing the Documentation to Github Pages<a class="headerlink" href="#publishing-the-documentation-to-github-pages" title="Link to this heading"></a></h2>
-<p>The directory <code class="docutils literal notranslate"><span class="pre">docs/build/html</span></code> needs to be added to git worktree for the branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>,
+<p>The directory <code class="docutils literal notranslate"><span class="pre">docs/build/</span></code> needs to be added to git worktree for the branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>,
 which is the default branch <cite>Github &lt;github.com&gt;</cite> uses for the pages feature.
 All that is left to do is as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs/build/html
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs/build/
 </pre></div>
 </div>
 <p>Now you need to verify that your working on <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code> branch, this can be validated as follows:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># from docs/build/html</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># from docs/build/</span>
 git<span class="w"> </span>branch
 </pre></div>
 </div>
 <p>After this verification we can add all the new documentation.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># from docs/build/html</span>
-git<span class="w"> </span>worktree<span class="w"> </span>add<span class="w"> </span>-f<span class="w"> </span>html<span class="w"> </span>gh-pages
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># from repo top directory</span>
+git<span class="w"> </span>worktree<span class="w"> </span>add<span class="w"> </span>-f<span class="w"> </span>docs/build<span class="w"> </span>gh-pages
+<span class="nb">cd</span><span class="w"> </span>docs/build
+
+<span class="c1"># from docs/build/</span>
 git<span class="w"> </span>add<span class="w"> </span>-A<span class="w"> </span>.
 git<span class="w"> </span>commit<span class="w"> </span>-sm<span class="w"> </span><span class="s2">&quot;update documentation&quot;</span>
 git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>gh-pages
