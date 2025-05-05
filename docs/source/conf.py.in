@@ -35,6 +35,7 @@ exclude_patterns = []
 
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
+html_baseurl = "https://roeey777.github.io/modern-cmake/"
 
 # -- Custom configuration ----------------------------------------------------
 # user starts in dark mode
