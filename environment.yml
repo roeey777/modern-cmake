@@ -6,7 +6,14 @@ channels:
 
 dependencies:
   - cmake
-  - cpputest
+  # cpputest version 4.0 installs the cmake stuff onto lib64 which cmake fails to find later
+  # and therefor find_package(CppUTest REQUIRED) failes.
+  - cpputest==3.8
   - spdlog
   - cppcheck
   - make
+  - doxygen
+  - python
+  - pip
+  - pip:
+    - -r requirements.txt

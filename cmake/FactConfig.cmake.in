@@ -1,0 +1,13 @@
+@PACKAGE_INIT@
+
+# For find_dependency
+include(CMakeFindDependencyMacro)
+
+get_filename_component(FACT_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+list(APPEND CMAKE_MODULE_PATH ${FACT_CMAKE_DIR})
+find_dependency(spdlog REQUIRED)
+list(REMOVE_AT CMAKE_MODULE_PATH -1)
+
+if(NOT TARGET Fact::Fact)
+    include("${FACT_CMAKE_DIR}/FactTargets.cmake")
+endif()

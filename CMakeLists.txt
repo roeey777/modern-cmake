@@ -1,22 +1,39 @@
-cmake_minimum_required(VERSION 3.27)
-project(
-  libfactorial
-  VERSION 0.0.1
-  LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.15)
+
+project(Fact LANGUAGES CXX)
+
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
+
+option(ENABLE_TESTING "Enable Test Builds" ON)
+
+# Link this 'library' to set the c++ standard / compile-time options requested
+add_library(project_options INTERFACE)
+target_compile_features(project_options INTERFACE cxx_std_17)
+
+# Link this 'library' to use the warnings specified in CompilerWarnings.cmake
+add_library(project_warnings INTERFACE)
+
+# standard compiler warnings
+include(cmake/CompilerWarnings.cmake)
+set_project_warnings(project_warnings)
+
+# sanitizer options if supported by compiler
+include(cmake/Sanitizers.cmake)
+enable_sanitizers(project_options)
+
+# cppcheck shouldn't validate cpputest since it's a third-party library
+set(CPPCHECK_EXCLUDES "--suppress=*:*/CppUTest/*")
+# allow for static analysis options
+include(cmake/StaticAnalyzers.cmake)
+
+message("CPPCHECK_EXCLUDES is:${CPPCHECK_EXCLUDES}")
+message("CMAKE_CXX_CPPCHECK is:${CMAKE_CXX_CPPCHECK}")
 
 add_subdirectory(src)
 
-target_include_directories(
-  Fact
-  PUBLIC $<INSTALL_INTERFACE:include>
-         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
-  PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/src)
-
-target_compile_options(Fact PRIVATE -Wall -Wextra -pedantic -Werror)
-target_compile_features(Fact PRIVATE cxx_std_11)
-
-find_package(spdlog 1.12.0 REQUIRED)
-
-# spdlog is used internally by Fact and therefor shouldn't be propagated into
-# other targets.
-target_link_libraries(Fact PRIVATE spdlog::spdlog)
+if(ENABLE_TESTING)
+    enable_testing()
+    message("Building Tests.")
+    add_subdirectory(test)
+endif()
