@@ -1,4 +1,5 @@
 docs/source/conf.py
+docs/build/
 
 .vscode/
 build/

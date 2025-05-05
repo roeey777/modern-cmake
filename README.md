@@ -1,6 +1,10 @@
 # CMake Training
 This repository will help you learn **Modern CMake**
 
+## Documentation
+
+The documentation is available at [github pages](https://roeey777.github.io/modern-cmake/)
+
 ## Exercise Goals
 
 By the time you complete this exercise you will know:
@@ -9,6 +13,7 @@ By the time you complete this exercise you will know:
 3. How to enable static code analisys using `cppcheck` and `clang-tidy`
 4. How to export your library in a modern way so that other developers will be
 able to import it as a CMake dependency.
+5. How to create & publish documentation on Github Pages.
 
 ## The Exercise
 This repo contains a simple C++ library: `Fact`
