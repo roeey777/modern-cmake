@@ -6,6 +6,7 @@ include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
 option(ENABLE_TESTING "Enable Test Builds" ON)
+option(ENABLE_DOCS "Enable Documentation Builds" ON)
 
 # Link this 'library' to set the c++ standard / compile-time options requested
 add_library(project_options INTERFACE)
@@ -36,4 +37,9 @@ if(ENABLE_TESTING)
     enable_testing()
     message("Building Tests.")
     add_subdirectory(test)
+endif()
+
+if(ENABLE_DOCS)
+    message("Building Docs.")
+    add_subdirectory(docs)
 endif()

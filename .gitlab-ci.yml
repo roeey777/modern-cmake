@@ -5,6 +5,7 @@ stages:
   - build
   - static-check
   - test
+  - test-deployment
   - deploy
 
 before_script:
@@ -27,6 +28,16 @@ build:
     - cmake -S . -B build/build  -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX
     - cmake --build build/build --target Fact
 
+build-docs:
+  stage: build
+  script:
+    - cmake -S . -B build/docs -Wdev -Werror=dev -DENABLE_DOCS=ON
+    - cmake --build/docs --target Sphinx
+  artifacts:
+    paths:
+      - build/docs/docs/docs/sphinx/
+    expire_in: 1 hour
+
 static-check:
   stage: static-check
   script:
@@ -42,10 +53,23 @@ build-unit-tests:
 
 # Test that the library is installed correctly and can be found by cmake
 downstream-test:
-  stage: deploy
+  stage: test-deployment
   script:
     - cmake -S . -B build/upstream  -Wdev -Werror=dev -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_TESTING=OFF
     - cmake --build build/upstream --target install
     - cmake -S test/downstream -B build/downstream  -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX
     - cmake --build build/downstream
     - cd build/downstream && ctest -V --no-tests=error .
+
+pages:
+  stage: deploy
+  dependencies:
+    - build-docs
+  script:
+    - mkdir -p public
+    - cp -r build/docs/docs/docs/sphinx/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
