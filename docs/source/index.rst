@@ -16,6 +16,7 @@ documentation for details.
    :caption: Contents:
 
    generate_docs
+   plantuml_example
 
 .. doxygenindex::
 
