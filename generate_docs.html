@@ -27,6 +27,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PlantUML Example" href="plantuml_example.html" />
     <link rel="prev" title="Modern-cmake documentation" href="index.html" /> 
 </head>
 
@@ -56,6 +57,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#publishing-the-documentation-to-github-pages">Publishing the Documentation to Github Pages</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="plantuml_example.html">PlantUML Example</a></li>
 </ul>
 
         </div>
@@ -95,7 +97,7 @@ There are a few steps for generating &amp; hosting documentation.</p>
 <p>If not installed please refer to the installation page.</p>
 <p>Afterwards you should execute the following commands:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build/docs<span class="w"> </span>-Wdev<span class="w"> </span>-Werror<span class="o">=</span>dev<span class="w"> </span>-DENABLE_DOCS<span class="o">=</span>ON
-cmake<span class="w"> </span>--build/docs<span class="w"> </span>--target<span class="w"> </span>Sphinx
+cmake<span class="w"> </span>--build<span class="w"> </span>build/docs<span class="w"> </span>--target<span class="w"> </span>Sphinx
 mkdir<span class="w"> </span>-p<span class="w"> </span>docs/build
 cp<span class="w"> </span>-r<span class="w"> </span>build/docs/docs/docs/sphinx/*<span class="w"> </span>docs/build/
 </pre></div>
@@ -143,6 +145,7 @@ git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Modern-cmake documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="plantuml_example.html" class="btn btn-neutral float-right" title="PlantUML Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
