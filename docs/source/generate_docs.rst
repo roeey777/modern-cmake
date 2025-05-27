@@ -20,7 +20,7 @@ Afterwards you should execute the following commands:
 .. code-block:: bash
 
    cmake -S . -B build/docs -Wdev -Werror=dev -DENABLE_DOCS=ON
-   cmake --build/docs --target Sphinx
+   cmake --build build/docs --target Sphinx
    mkdir -p docs/build
    cp -r build/docs/docs/docs/sphinx/* docs/build/
 

@@ -13,6 +13,7 @@ dependencies:
   - cppcheck
   - make
   - doxygen
+  - plantuml
   - python
   - pip
   - pip:
