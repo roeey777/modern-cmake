@@ -8,9 +8,11 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
+from datetime import date
+
 project = "Modern-cmake"
-copyright = "2025, Eyal Royee"
 author = "Eyal Royee"
+copyright = f"{date.today().year}, {author}"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
