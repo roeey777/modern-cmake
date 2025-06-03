@@ -13,7 +13,13 @@ TEST_GROUP(FactTests)
 
   void teardown()
   {
-    MemoryLeakWarningPlugin::turnOnNewDeleteOverloads();
+    /*
+     * for CppUTest version 3.8 or lower one should use:
+     *   MemoryLeakWarningPlugin::turnOnNewDeleteOverloads();
+     * and from CppUTest version 4.0 onwards one should use the following
+     * instead:
+     */
+    MemoryLeakWarningPlugin::turnOnDefaultNotThreadSafeNewDeleteOverloads();
   }
 };
 
