@@ -55,13 +55,15 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Generate The Documentation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#automatic-generation-of-documentation">Automatic generation of documentation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#publishing-the-documentation-to-github-pages">Publishing the Documentation to Github Pages</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="plantuml_example.html">PlantUML Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mermaid_example.html">Mermaid Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphviz_example.html">Graphviz Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diagrams_example.html">Diagrams Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shfmt.html">shfmt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shellcheck.html">ShellCheck</a></li>
 </ul>
 
         </div>
@@ -94,6 +96,13 @@
 There are a few steps for generating &amp; hosting documentation.</p>
 <section id="automatic-generation-of-documentation">
 <h2>Automatic generation of documentation<a class="headerlink" href="#automatic-generation-of-documentation" title="Link to this heading"></a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 58248f69ad8816a7dd4bb3b89089594196befebc: </span></p>
+<p>This method of publishing the documentation to <a class="reference external" href="https://roeey777.github.io/modern-cmake/">Github Pages</a> is out-of-date.
+Please use <code class="docutils literal notranslate"><span class="pre">publish-docs.sh</span></code> script instead.</p>
+</div>
 <p>At first you should verify that you are using the <code class="docutils literal notranslate"><span class="pre">modern-cmake</span></code> environment.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>modern-cmake
 </pre></div>
@@ -115,9 +124,6 @@ You can inspect it as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>firefox<span class="w"> </span>docs/build/index.html
 </pre></div>
 </div>
-</section>
-<section id="publishing-the-documentation-to-github-pages">
-<h2>Publishing the Documentation to Github Pages<a class="headerlink" href="#publishing-the-documentation-to-github-pages" title="Link to this heading"></a></h2>
 <p>The directory <code class="docutils literal notranslate"><span class="pre">docs/build/</span></code> needs to be added to git worktree for the branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>,
 which is the default branch <a class="reference external" href="https://github.com">Github</a> uses for the pages feature.
 All that is left to do is as follows:</p>
@@ -138,6 +144,26 @@ git<span class="w"> </span>worktree<span class="w"> </span>add<span class="w"> <
 git<span class="w"> </span>add<span class="w"> </span>-A<span class="w"> </span>.
 git<span class="w"> </span>commit<span class="w"> </span>-sm<span class="w"> </span><span class="s2">&quot;update documentation&quot;</span>
 git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>gh-pages
+</pre></div>
+</div>
+<p>And Your’e Done!</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here is the <strong>prefered</strong> way of publishing the documentation.</p>
+</div>
+<p>Please execute the <code class="docutils literal notranslate"><span class="pre">publish-docs.sh</span></code> script like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/publish-docs.sh
+</pre></div>
+</div>
+<p>The script will invoke all the right commands for working with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">worktree</span></code> properly and will
+create a new commit on branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>, then it will push the new commit onto the remote <code class="docutils literal notranslate"><span class="pre">origin</span></code>.
+The remote can be overridden as follows:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/publish-docs.sh<span class="w"> </span>other-remote-name
+</pre></div>
+</div>
+<p>All-n`-all you can use read more by executing:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./scripts/publish-docs.sh<span class="w"> </span>--help
 </pre></div>
 </div>
 <p>And Your’e Done!</p>

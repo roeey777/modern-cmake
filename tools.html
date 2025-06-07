@@ -3,9 +3,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; Modern-cmake  documentation</title>
+  <title>Tools &mdash; Modern-cmake  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
@@ -14,7 +15,7 @@
       <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
 
   
-    <link rel="canonical" href="https://roeey777.github.io/modern-cmake/genindex.html" />
+    <link rel="canonical" href="https://roeey777.github.io/modern-cmake/tools.html" />
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="_static/documentation_options.js?v=5929fcd5"></script>
@@ -22,19 +23,13 @@
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="_static/copybutton.js?v=f281be69"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
-      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
-      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
-      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
-      <script type="module">
-import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
-window.addEventListener("load", () => mermaid.run());
-</script>
       <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
       <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
     <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="shfmt" href="shfmt.html" />
+    <link rel="prev" title="Diagrams Example" href="diagrams_example.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,13 +52,13 @@ window.addEventListener("load", () => mermaid.run());
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="generate_docs.html">Generate The Documentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plantuml_example.html">PlantUML Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mermaid_example.html">Mermaid Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="graphviz_example.html">Graphviz Example</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diagrams_example.html">Diagrams Example</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shfmt.html">shfmt</a></li>
 <li class="toctree-l1"><a class="reference internal" href="shellcheck.html">ShellCheck</a></li>
 </ul>
@@ -82,8 +77,9 @@ window.addEventListener("load", () => mermaid.run());
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Index</li>
+      <li class="breadcrumb-item active">Tools</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tools.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -91,26 +87,30 @@ window.addEventListener("load", () => mermaid.run());
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- <a href="#F"><strong>F</strong></a>
- 
-</div>
-<h2 id="F">F</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="index.html#_CPPv49factorialj">factorial (C++ function)</a>
-</li>
-  </ul></td>
-</tr></table>
-
+  <section id="tools">
+<h1>Tools<a class="headerlink" href="#tools" title="Link to this heading"></a></h1>
+<p>There are multiple tools used by this project, let’s try to list them all (and probably failed):</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CMake</span></code> - The build-system itself.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Doxygen</span></code> - Documentation generator tool for C/C++ based projects.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sphinx</span></code> - Documentation generator tool.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">breathe</span></code> - a <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> extension for combining <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> with <code class="docutils literal notranslate"><span class="pre">doxygen</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CppUTest</span></code> - a unit-testing framework for C++ code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cppcheck</span></code> - static analyzer tool for C/C++ code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shfmt</span></code> - bash scripts formatter.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shellcheck</span></code> - static analyzer for bash scripts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PlantUML</span></code> - Tool for generating images from UML text.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Graphviz</span></code> - Tool for generating images from graphviz text.</p></li>
+</ol>
+</section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="diagrams_example.html" class="btn btn-neutral float-left" title="Diagrams Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="shfmt.html" class="btn btn-neutral float-right" title="shfmt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
