@@ -32,7 +32,7 @@ build-docs:
   stage: build
   script:
     - cmake -S . -B build/docs -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_DOCS=ON
-    - cmake --build/docs --target Sphinx
+    - cmake --build build/docs --target Sphinx
   artifacts:
     paths:
       - build/docs/docs/docs/sphinx/

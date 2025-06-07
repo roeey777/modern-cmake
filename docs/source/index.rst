@@ -17,6 +17,9 @@ documentation for details.
 
    generate_docs
    plantuml_example
+   mermaid_example
+   graphviz_example
+   diagrams_example
 
 .. doxygenindex::
 
