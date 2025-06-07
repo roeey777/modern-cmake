@@ -19,7 +19,7 @@ Afterwards you should execute the following commands:
 
 .. code-block:: bash
 
-   cmake -S . -B build/docs -Wdev -Werror=dev -DENABLE_DOCS=ON
+   cmake -S . -B build/docs -Wdev -Werror=dev -DENABLE_DOCS=ON -DENABLE_TESTING=OFF
    cmake --build build/docs --target Sphinx
    mkdir -p docs/build
    cp -r build/docs/docs/docs/sphinx/* docs/build/
@@ -42,7 +42,7 @@ Publishing the Documentation to Github Pages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The directory ``docs/build/`` needs to be added to git worktree for the branch ``gh-pages``,
-which is the default branch `Github <github.com>` uses for the pages feature.
+which is the default branch `Github <https://github.com>`_ uses for the pages feature.
 All that is left to do is as follows:
 
 .. code-block:: bash
