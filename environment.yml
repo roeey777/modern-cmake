@@ -14,5 +14,6 @@ dependencies:
   - plantuml
   - python
   - pip
+  - graphviz
   - pip:
     - -r requirements.txt

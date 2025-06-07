@@ -15,7 +15,7 @@ One can achieve this by following these instructions:
 
    .. code-block:: bash
 
-      pip install sphinxcontrib-plugin
+      pip install sphinxcontrib-plantuml
 
 #. Make sure that this plugin would be recognized in your ``conf.py`` by adding it to the ``extentions`` list
 

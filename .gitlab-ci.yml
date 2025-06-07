@@ -32,7 +32,7 @@ build-docs:
   stage: build
   script:
     - cmake -S . -B build/docs -Wdev -Werror=dev -DENABLE_DOCS=ON
-    - cmake --build/docs --target Sphinx
+    - cmake --build build/docs --target Sphinx
   artifacts:
     paths:
       - build/docs/docs/docs/sphinx/
