@@ -9,6 +9,7 @@
   <title>Generate The Documentation &mdash; Modern-cmake  documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
       <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
@@ -58,6 +59,9 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="plantuml_example.html">PlantUML Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mermaid_example.html">Mermaid Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphviz_example.html">Graphviz Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diagrams_example.html">Diagrams Example</a></li>
 </ul>
 
         </div>
@@ -96,7 +100,7 @@ There are a few steps for generating &amp; hosting documentation.</p>
 </div>
 <p>If not installed please refer to the installation page.</p>
 <p>Afterwards you should execute the following commands:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build/docs<span class="w"> </span>-Wdev<span class="w"> </span>-Werror<span class="o">=</span>dev<span class="w"> </span>-DENABLE_DOCS<span class="o">=</span>ON
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>-S<span class="w"> </span>.<span class="w"> </span>-B<span class="w"> </span>build/docs<span class="w"> </span>-Wdev<span class="w"> </span>-Werror<span class="o">=</span>dev<span class="w"> </span>-DENABLE_DOCS<span class="o">=</span>ON<span class="w"> </span>-DENABLE_TESTING<span class="o">=</span>OFF
 cmake<span class="w"> </span>--build<span class="w"> </span>build/docs<span class="w"> </span>--target<span class="w"> </span>Sphinx
 mkdir<span class="w"> </span>-p<span class="w"> </span>docs/build
 cp<span class="w"> </span>-r<span class="w"> </span>build/docs/docs/docs/sphinx/*<span class="w"> </span>docs/build/
@@ -115,7 +119,7 @@ You can inspect it as follows:</p>
 <section id="publishing-the-documentation-to-github-pages">
 <h2>Publishing the Documentation to Github Pages<a class="headerlink" href="#publishing-the-documentation-to-github-pages" title="Link to this heading"></a></h2>
 <p>The directory <code class="docutils literal notranslate"><span class="pre">docs/build/</span></code> needs to be added to git worktree for the branch <code class="docutils literal notranslate"><span class="pre">gh-pages</span></code>,
-which is the default branch <cite>Github &lt;github.com&gt;</cite> uses for the pages feature.
+which is the default branch <a class="reference external" href="https://github.com">Github</a> uses for the pages feature.
 All that is left to do is as follows:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs/build/
 </pre></div>
