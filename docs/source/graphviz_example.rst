@@ -37,7 +37,7 @@ After those instructions you should be able to add the following directives in y
       }
 
 
-Here is how it looks (this is a very small sequence diagram)
+Here is how it looks:
 
 .. graphviz::
 
