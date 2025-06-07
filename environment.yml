@@ -15,5 +15,7 @@ dependencies:
   - python
   - pip
   - graphviz
+  - go-shfmt
+  - shellcheck
   - pip:
     - -r requirements.txt

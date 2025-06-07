@@ -20,6 +20,9 @@ documentation for details.
    mermaid_example
    graphviz_example
    diagrams_example
+   tools
+   shfmt
+   shellcheck
 
 .. doxygenindex::
 
