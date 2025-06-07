@@ -23,7 +23,7 @@ DEFAULT_BRANCH="solution/roeey"
 GIT_REMOTE_NAME="${1:-github}"
 GITHUB_PAGES_BRANCH="gh-pages"
 COMMIT_ID="$(git rev-parse "${DEFAULT_BRANCH}")"
-COMMIT_MSG="Documentation for commit ,${COMMIT_ID}"
+COMMIT_MSG="Documentation for commit ${COMMIT_ID}"
 CONDA_ENVIRONMENT_NAME="modern-cmake"
 
 function copy_to_build_dir() {
