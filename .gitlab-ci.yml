@@ -1,4 +1,4 @@
-image: continuumio/miniconda3:latest
+image: continuumio/miniconda3:25.3.1-1
 
 stages:
   - bootstrap
@@ -20,7 +20,7 @@ before_script:
 just-configure:
   stage: bootstrap
   script:
-    - cmake -S . -B build/bootstrap  -Wdev -Werror=dev
+    - cmake -S . -B build/bootstrap  -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX
 
 build:
   stage: build
@@ -31,7 +31,7 @@ build:
 build-docs:
   stage: build
   script:
-    - cmake -S . -B build/docs -Wdev -Werror=dev -DENABLE_DOCS=ON
+    - cmake -S . -B build/docs -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_DOCS=ON
     - cmake --build build/docs --target Sphinx
   artifacts:
     paths:
