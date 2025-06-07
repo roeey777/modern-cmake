@@ -33,6 +33,7 @@ extensions = [
     "sphinxcontrib.plantuml",    # Uses plantuml for plotting graphs & visuals.
     "sphinxcontrib.mermaid",     # Uses mermaid for plotting graphs & visuals.
     "sphinx_diagrams",           # Uses graphviz & diagrams for plotting system architecture from code.
+    "sphinxcontrib.shellcheck",  # Use shellcheck **inside** code blocks.
 ]
 
 templates_path = ["_templates"]
