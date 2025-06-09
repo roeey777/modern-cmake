@@ -17,5 +17,11 @@ dependencies:
   - graphviz>=12.2.1,<13
   - go-shfmt>=3.11.0,<4
   - shellcheck>=0.10.0,<1
+  # clang-tidy is part of clang-tools, however it still needs clang & clangxx
+  # in order to work properly.
+  - clang>=20.1.6,<21
+  - clangxx>=20.1.6,<21
+  - clang-tools>=20.1.6,<21
+  - include-what-you-use>=0.24,<1
   - pip:
     - -r requirements.txt

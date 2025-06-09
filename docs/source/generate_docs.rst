@@ -1,3 +1,5 @@
+.. _generate_docs:
+
 Generate The Documentation
 --------------------------
 
@@ -45,8 +47,7 @@ Automatic generation of documentation
       firefox docs/build/index.html
 
 
-   Publishing the Documentation to Github Pages
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   **Publishing the Documentation to Github Pages**
 
    The directory ``docs/build/`` needs to be added to git worktree for the branch ``gh-pages``,
    which is the default branch `Github <https://github.com>`_ uses for the pages feature.

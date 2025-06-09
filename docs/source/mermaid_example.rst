@@ -1,3 +1,5 @@
+.. _mermaid_example:
+
 Mermaid Example
 ~~~~~~~~~~~~~~~
 

@@ -1,3 +1,5 @@
+.. _graphviz_example:
+
 Graphviz Example
 ~~~~~~~~~~~~~~~~
 
