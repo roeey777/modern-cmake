@@ -1,3 +1,5 @@
+.. _plantuml_example:
+
 PlantUML Example
 ~~~~~~~~~~~~~~~~
 
