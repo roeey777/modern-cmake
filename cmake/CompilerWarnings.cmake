@@ -44,7 +44,10 @@ function(set_project_warnings project_name)
     )
 
     if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-        set(PROJECT_WARNINGS ${GCC_WARNINGS})
+	if(NOT ENABLE_CLANG_TIDY)
+	    # even if the compiler is GNU clang-tidy would complain...
+            set(PROJECT_WARNINGS ${GCC_WARNINGS})
+	endif()
     elseif(CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
         set(PROJECT_WARNINGS ${CLANG_WARNINGS})
     else()

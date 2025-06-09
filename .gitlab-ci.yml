@@ -38,10 +38,22 @@ build-docs:
       - build/docs/docs/docs/sphinx/
     expire_in: 1 hour
 
-static-check:
+cppcheck:
   stage: static-check
   script:
     - cmake -S . -B build/static -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_CPPCHECK=ON
+    - cmake --build build/static
+
+clang-tidy:
+  stage: static-check
+  script:
+    - cmake -S . -B build/static -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX -DENABLE_CLANG_TIDY=ON
+    - cmake --build build/static
+
+iwyu:
+  stage: static-check
+  script:
+    - cmake -S . -B build/static -Wdev -Werror=dev -DCMAKE_FIND_ROOT_PATH=$CONDA_PREFIX  -DENABLE_IWYU=ON
     - cmake --build build/static
 
 build-unit-tests:

@@ -1,3 +1,5 @@
+.. _diagrams_example:
+
 Diagrams Example
 ~~~~~~~~~~~~~~~~
 
