@@ -16,7 +16,6 @@
 #
 # ******************************************************************
 
-# shellcheck disable=SC2283  # This is only a visual choice to keep all assignments aligned.
 CMAKE_BUILD_DIR="build/docs"
 DOCS_BUILD_DIR="docs/build"
 DEFAULT_BRANCH="solution/roeey"
