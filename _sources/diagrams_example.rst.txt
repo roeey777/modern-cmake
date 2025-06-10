@@ -9,7 +9,11 @@ There diagrams let you visualize system architecture , here is a quote from the 
 
 ::
 
-  Diagrams lets you draw the cloud system architecture in Python code. It was born for prototyping a new system architecture design without any design tools. You can also describe or visualize the existing system architecture as well. Diagrams currently supports main major providers including: AWS, Azure, GCP, Kubernetes, Alibaba Cloud, Oracle Cloud etc... It also supports On-Premises nodes, SaaS and major Programming frameworks and languages.
+  Diagrams lets you draw the cloud system architecture in Python code.
+  It was born for prototyping a new system architecture design without any design tools.
+  You can also describe or visualize the existing system architecture as well.
+  Diagrams currently supports main major providers including: AWS, Azure, GCP, Kubernetes, Alibaba Cloud, Oracle Cloud etc...
+  It also supports On-Premises nodes, SaaS and major Programming frameworks and languages.
 
 One can achieve this by following these instructions:
 
@@ -37,7 +41,7 @@ One can achieve this by following these instructions:
 
       extentions = [
           ...
-          "sphinx.ext.graphviz",
+          "sphinx_diagrams",
           ...
       ]
 
