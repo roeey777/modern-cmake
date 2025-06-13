@@ -7,3 +7,4 @@ sphinxcontrib-plantuml>=0.30,<1
 sphinxcontrib-mermaid>=1.0.0,<2
 sphinx-diagrams>=0.4.0,<1
 sphinxcontrib-shellcheck>=1.1.2,<2
+sphinxcontrib-wavedrom>=3.0.4,<4

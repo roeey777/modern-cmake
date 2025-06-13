@@ -18,10 +18,7 @@ documentation for details.
    :caption: Contents:
 
    generate_docs
-   plantuml_example
-   mermaid_example
-   graphviz_example
-   diagrams_example
+   diagrams_and_graphs_examples
    tools
 
 .. doxygenindex::

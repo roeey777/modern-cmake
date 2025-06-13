@@ -13,6 +13,7 @@ from datetime import date
 project = "Modern-cmake"
 author = "Eyal Royee"
 copyright = f"{date.today().year}, {author}"
+language = "en"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -25,6 +26,7 @@ extensions = [
     "sphinx.ext.autodoc",        # Include documentation from docstrings.
     "sphinx.ext.githubpages",    # Adds .nojekyll so everythings works in gh-pages.
     "sphinx.ext.graphviz",       # Uses graphviz for plotting graphs & visuals.
+    "sphinx.ext.ifconfig",       # Support conditional configuration.
 
     # sphinx external extensions
     "breathe",                   # The "glue" between doxygen & sphinx.
@@ -34,11 +36,18 @@ extensions = [
     "sphinxcontrib.mermaid",     # Uses mermaid for plotting graphs & visuals.
     "sphinx_diagrams",           # Uses graphviz & diagrams for plotting system architecture from code.
     "sphinxcontrib.shellcheck",  # Use shellcheck **inside** code blocks.
+    "sphinxcontrib.wavedrom",    # Uses wavedrom for plotting graphs & visuals (mainly for signals).
 ]
 
 templates_path = ["_templates"]
 exclude_patterns = []
 
+source_suffix = [
+    ".rst",
+    ".md",
+]
+
+master_doc = "index"
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -47,6 +56,13 @@ exclude_patterns = []
 html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 html_baseurl = "https://roeey777.github.io/modern-cmake/"
+"""
+html_context = {
+    'css_files': [
+        '_static/style/custom.css',  # override wide tables in RTD theme
+    ],
+}
+"""
 
 # -- Custom configuration ----------------------------------------------------
 # user starts in dark mode
@@ -60,3 +76,12 @@ breathe_default_project = "Modern-cmake"
 
 # plantuml configurations
 plantuml_output_format = "svg_img"
+
+# WaveDrom configuration
+
+online_wavedrom_js_url = "https://wavedrom.com/"
+
+# offline_skin_js_path = "default.js"
+# offline_wavedrom_js_path = "wavedrom.js"
+wavedrom_html_jsinline = True
+
