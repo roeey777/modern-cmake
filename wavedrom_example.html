@@ -1,0 +1,577 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WaveDrom Example &mdash; Modern-cmake  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://roeey777.github.io/modern-cmake/wavedrom_example.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="https://wavedrom.com//skins/default.js"></script>
+      <script src="https://wavedrom.com//wavedrom.min.js"></script>
+      <script src="_static/dark_mode_js/default_dark.js?v=fd565c74"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tools" href="tools.html" />
+    <link rel="prev" title="PlantUML Example" href="plantuml_example.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Modern-cmake
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="generate_docs.html">Generate The Documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="diagrams_and_graphs_examples.html">Diagrams &amp; Graphs Examples:</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="diagrams_example.html">Diagrams Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graphviz_example.html">Graphviz Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mermaid_example.html">Mermaid Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plantuml_example.html">PlantUML Example</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">WaveDrom Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wavedrom-short-turorial">WaveDrom Short Turorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-the-signal">Step 1. The Signal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-adding-clock">Step 2. Adding Clock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-putting-all-together">Step 3. Putting all together</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-spacers-and-gaps">Step 4. Spacers and Gaps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-the-groups">Step 5. The groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-6-period-and-phase">Step 6. Period and Phase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-7-the-config-property">Step 7.The config{} property</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#hscale-1">Hscale=1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hscale-2">Hscale=2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hscale-3">Hscale=3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#head-foot-tock-text">Head, foot, tock, text</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#h1-h2-h3-h4-h5-h6-muted-warning-error-info-success">H1, h2, h3, h4, h5, h6, muted, warning, error, info, success</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-8-arrows">Step 8. Arrows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#splines">Splines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharp-lines">Sharp lines</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-9-some-code">Step 9. Some code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-10-from-file">Step 10. From file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-11-figure">Step 11. Figure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#register">Register</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Tools</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Modern-cmake</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="diagrams_and_graphs_examples.html">Diagrams &amp; Graphs Examples:</a></li>
+      <li class="breadcrumb-item active">WaveDrom Example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/wavedrom_example.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="wavedrom-example">
+<span id="id1"></span><h1>WaveDrom Example<a class="headerlink" href="#wavedrom-example" title="Link to this heading"></a></h1>
+<p>WaveDrom draws your Timing Diagram or Waveform from simple textual description.
+It comes with description language, rendering engine and the editor.
+WaveDrom editor works in the browser or can be installed on your system.
+Rendering engine can be embeded into any webpage.</p>
+<p>There is a plugin for <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> called <code class="docutils literal notranslate"><span class="pre">sphinxcontrib-wavedrom</span></code> which adds support for embedding <code class="docutils literal notranslate"><span class="pre">WaveDrom</span></code> graphs
+in your documents, including general flowcharts, sequence diagrams, gantt diagrams and more. One can achieve this by following these instructions:</p>
+<ol class="arabic">
+<li><p>Make sure you have the <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> plugin for <code class="docutils literal notranslate"><span class="pre">wavedrom</span></code> (installable via <code class="docutils literal notranslate"><span class="pre">pip</span></code>)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>sphinxcontrib-wavedrom
+</pre></div>
+</div>
+</li>
+<li><p>Make sure that this plugin would be recognized in your <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> by adding it to the <code class="docutils literal notranslate"><span class="pre">extentions</span></code> list</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this project the <code class="docutils literal notranslate"><span class="pre">conf.py</span></code> is generated by <code class="docutils literal notranslate"><span class="pre">cmake</span></code> from the <code class="docutils literal notranslate"><span class="pre">conf.py.in</span></code> file and therefore
+this addition should be added to <code class="docutils literal notranslate"><span class="pre">conf.py.in</span></code> since it’s the template file for the generated <code class="docutils literal notranslate"><span class="pre">conf.py</span></code>.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">extentions</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">...</span>
+    <span class="s2">&quot;sphinxcontrib.wavedrom&quot;</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>After those instructions you should be able to add the following directives in your <code class="docutils literal notranslate"><span class="pre">.rst</span></code> files</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span><span class="p">..</span> <span class="ow">wavedrom</span><span class="p">::</span>
+
+   { signal: [
+     {    name: &#39;clk&#39;,   wave: &#39;p..Pp..P&#39;},
+     [&#39;Master&#39;,
+       [&#39;ctrl&#39;,
+         {name: &#39;write&#39;, wave: &#39;01.0....&#39;},
+         {name: &#39;read&#39;,  wave: &#39;0...1..0&#39;}
+       ],
+       {  name: &#39;addr&#39;,  wave: &#39;x3.x4..x&#39;, data: &#39;A1 A2&#39;},
+       {  name: &#39;wdata&#39;, wave: &#39;x3.x....&#39;, data: &#39;D1&#39;   },
+     ],
+     {},
+     [&#39;Slave&#39;,
+       [&#39;ctrl&#39;,
+         {name: &#39;ack&#39;,   wave: &#39;x01x0.1x&#39;},
+       ],
+       {  name: &#39;rdata&#39;, wave: &#39;x.....4x&#39;, data: &#39;Q2&#39;},
+     ]
+   ]}
+</pre></div>
+</div>
+<p>Here is how it looks (this is a very small sequence diagram)</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ signal: [
+  {    name: 'clk',   wave: 'p..Pp..P'},
+  ['Master',
+    ['ctrl',
+      {name: 'write', wave: '01.0....'},
+      {name: 'read',  wave: '0...1..0'}
+    ],
+    {  name: 'addr',  wave: 'x3.x4..x', data: 'A1 A2'},
+    {  name: 'wdata', wave: 'x3.x....', data: 'D1'   },
+  ],
+  {},
+  ['Slave',
+    ['ctrl',
+      {name: 'ack',   wave: 'x01x0.1x'},
+    ],
+    {  name: 'rdata', wave: 'x.....4x', data: 'Q2'},
+  ]
+]}
+</script>
+</div>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ signal: [
+  { name: "CK",   wave: "P.......",                                              period: 2  },
+  { name: "CMD",  wave: "x.3x=x4x=x=x=x=x", data: "RAS NOP CAS NOP NOP NOP NOP", phase: 0.5 },
+  { name: "ADDR", wave: "x.=x..=x........", data: "ROW COL",                     phase: 0.5 },
+  { name: "DQS",  wave: "z.......0.1010z." },
+  { name: "DQ",   wave: "z.........5555z.", data: "D0 D1 D2 D3" }
+]}
+</script>
+</div>
+</section>
+<section id="wavedrom-short-turorial">
+<span id="wavedrom-tutorial"></span><h1>WaveDrom Short Turorial<a class="headerlink" href="#wavedrom-short-turorial" title="Link to this heading"></a></h1>
+<p>A tutorial for <a class="reference external" href="https://wavedrom.com">WaveDrom</a> can be found <a class="reference external" href="https://wavedrom.com/tutorial.html">here</a>.</p>
+<section id="step-1-the-signal">
+<h2>Step 1. The Signal<a class="headerlink" href="#step-1-the-signal" title="Link to this heading"></a></h2>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [{ "name": "Alfa", "wave": "01.zx=ud.23.45" }] }
+</script>
+</div>
+</section>
+<section id="step-2-adding-clock">
+<h2>Step 2. Adding Clock<a class="headerlink" href="#step-2-adding-clock" title="Link to this heading"></a></h2>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+        { "name": "pclk", "wave": "p......." },
+        { "name": "Pclk", "wave": "P......." },
+        { "name": "nclk", "wave": "n......." },
+        { "name": "Nclk", "wave": "N......." },
+        {},
+        { "name": "clk0", "wave": "phnlPHNL" },
+        { "name": "clk1", "wave": "xhlhLHl." },
+        { "name": "clk2", "wave": "hpHplnLn" },
+        { "name": "clk3", "wave": "nhNhplPl" },
+        { "name": "clk4", "wave": "xlh.L.Hx" }
+]}
+</script>
+</div>
+</section>
+<section id="step-3-putting-all-together">
+<h2>Step 3. Putting all together<a class="headerlink" href="#step-3-putting-all-together" title="Link to this heading"></a></h2>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+        { "name": "clk",  "wave": "P......" },
+        { "name": "bus",  "wave": "x.==.=x", "data": ["head", "body", "tail", "data"] },
+        { "name": "wire", "wave": "0.1..0." }
+]}
+</script>
+</div>
+</section>
+<section id="step-4-spacers-and-gaps">
+<h2>Step 4. Spacers and Gaps<a class="headerlink" href="#step-4-spacers-and-gaps" title="Link to this heading"></a></h2>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+        { "name": "clk",         "wave": "p.....|..." },
+        { "name": "Data",        "wave": "x.345x|=.x", "data": ["head", "body", "tail", "data"] },
+        { "name": "Request",     "wave": "0.1..0|1.0" },
+        {},
+        { "name": "Acknowledge", "wave": "1.....|01." }
+]}
+</script>
+</div>
+</section>
+<section id="step-5-the-groups">
+<h2>Step 5. The groups<a class="headerlink" href="#step-5-the-groups" title="Link to this heading"></a></h2>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+        {    "name": "clk",   "wave": "p..Pp..P"},
+        ["Master",
+                ["ctrl",
+                        {"name": "write", "wave": "01.0...."},
+                        {"name": "read",  "wave": "0...1..0"}
+                ],
+                {  "name": "addr",  "wave": "x3.x4..x", "data": "A1 A2"},
+                {  "name": "wdata", "wave": "x3.x....", "data": "D1"   }
+        ],
+        {},
+        ["Slave",
+                ["ctrl",
+                        {"name": "ack",   "wave": "x01x0.1x"}
+                ],
+                {  "name": "rdata", "wave": "x.....4x", "data": "Q2"}
+        ]
+]}
+</script>
+</div>
+</section>
+<section id="step-6-period-and-phase">
+<h2>Step 6. Period and Phase<a class="headerlink" href="#step-6-period-and-phase" title="Link to this heading"></a></h2>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+        { "name": "CK",   "wave": "P.......",                                              "period": 2  },
+        { "name": "CMD",  "wave": "x.3x=x4x=x=x=x=x", "data": "RAS NOP CAS NOP NOP NOP NOP", "phase": 0.5 },
+        { "name": "ADDR", "wave": "x.=x..=x........", "data": "ROW COL",                     "phase": 0.5 },
+        { "name": "DQS",  "wave": "z.......0.1010z." },
+        { "name": "DQ",   "wave": "z.........5555z.", "data": "D0 D1 D2 D3" }
+]}
+</script>
+</div>
+</section>
+<section id="step-7-the-config-property">
+<h2>Step 7.The config{} property<a class="headerlink" href="#step-7-the-config-property" title="Link to this heading"></a></h2>
+<section id="hscale-1">
+<h3>Hscale=1<a class="headerlink" href="#hscale-1" title="Link to this heading"></a></h3>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+        { "name": "clk",     "wave": "p...." },
+        { "name": "Data",    "wave": "x345x",  "data": ["head", "body", "tail"] },
+        { "name": "Request", "wave": "01..0" }
+        ],
+        "config": { "hscale": 1 }
+}
+</script>
+</div>
+</section>
+<section id="hscale-2">
+<h3>Hscale=2<a class="headerlink" href="#hscale-2" title="Link to this heading"></a></h3>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+        { "name": "clk",     "wave": "p...." },
+        { "name": "Data",    "wave": "x345x",  "data": ["head", "body", "tail"] },
+        { "name": "Request", "wave": "01..0" }
+        ],
+        "config": { "hscale": 2 }
+}
+</script>
+</div>
+</section>
+<section id="hscale-3">
+<h3>Hscale=3<a class="headerlink" href="#hscale-3" title="Link to this heading"></a></h3>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+        { "name": "clk",     "wave": "p...." },
+        { "name": "Data",    "wave": "x345x",  "data": ["head", "body", "tail"] },
+        { "name": "Request", "wave": "01..0" }
+        ],
+        "config": { "hscale": 3 }
+}
+</script>
+</div>
+</section>
+<section id="head-foot-tock-text">
+<h3>Head, foot, tock, text<a class="headerlink" href="#head-foot-tock-text" title="Link to this heading"></a></h3>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{"signal": [
+        {"name":"clk",         "wave": "p...." },
+        {"name":"Data",        "wave": "x345x", "data": "a b c" },
+        {"name":"Request",     "wave": "01..0" }
+],
+"head":{
+        "text":"WaveDrom example",
+        "tick":0
+},
+"foot":{
+        "text":"Figure 100",
+        "tock":9
+}
+}
+</script>
+</div>
+</section>
+<section id="h1-h2-h3-h4-h5-h6-muted-warning-error-info-success">
+<h3>H1, h2, h3, h4, h5, h6, muted, warning, error, info, success<a class="headerlink" href="#h1-h2-h3-h4-h5-h6-muted-warning-error-info-success" title="Link to this heading"></a></h3>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{"signal": [
+        {"name":"clk", "wave": "p.....PPPPp...." },
+        {"name":"dat", "wave": "x....2345x.....", "data": "a b c d" },
+        {"name":"req", "wave": "0....1...0....." }
+],
+"head": {"text":
+        ["tspan",
+                ["tspan", {"class":"error h1"}, "error "],
+                ["tspan", {"class":"warning h2"}, "warning "],
+                ["tspan", {"class":"info h3"}, "info "],
+                ["tspan", {"class":"success h4"}, "success "],
+                ["tspan", {"class":"muted h5"}, "muted "],
+                ["tspan", {"class":"h6"}, "h6 "],
+                "default ",
+                ["tspan", {"fill":"pink", "font-weight":"bold", "font-style":"italic"}, "pink-bold-italic"]
+        ]
+},
+"foot": {"text":
+        ["tspan", "E=mc",
+                ["tspan", {"dy":"-5"}, "2"],
+                ["tspan", {"dy": "5"}, ". "],
+                ["tspan", {"font-size":"25"}, "B "],
+                ["tspan", {"text-decoration":"overline"},"over "],
+                ["tspan", {"text-decoration":"underline"},"under "],
+                ["tspan", {"baseline-shift":"sub"}, "sub "],
+                ["tspan", {"baseline-shift":"super"}, "super "]
+        ],"tock":-5
+}
+}
+</script>
+</div>
+</section>
+</section>
+<section id="step-8-arrows">
+<h2>Step 8. Arrows<a class="headerlink" href="#step-8-arrows" title="Link to this heading"></a></h2>
+<section id="splines">
+<h3>Splines<a class="headerlink" href="#splines" title="Link to this heading"></a></h3>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+        { "name": "A", "wave": "01........0....",  "node": ".a........j" },
+        { "name": "B", "wave": "0.1.......0.1..",  "node": "..b.......i" },
+        { "name": "C", "wave": "0..1....0...1..",  "node": "...c....h.." },
+        { "name": "D", "wave": "0...1..0.....1.",  "node": "....d..g..." },
+        { "name": "E", "wave": "0....10.......1",  "node": ".....ef...." }
+        ],
+        "edge": [
+                "a~b t1", "c-~a t2", "c-~>d time 3", "d~-e",
+                "e~>f", "f->g", "g-~>h", "h~>i some text", "h~->j"
+        ]
+}
+</script>
+</div>
+</section>
+<section id="sharp-lines">
+<h3>Sharp lines<a class="headerlink" href="#sharp-lines" title="Link to this heading"></a></h3>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+        { "name": "A", "wave": "01..0..",  "node": ".a..e.." },
+        { "name": "B", "wave": "0.1..0.",  "node": "..b..d.", "phase":0.5 },
+        { "name": "C", "wave": "0..1..0",  "node": "...c..f" },
+        {                              "node": "...g..h" }
+],
+"edge": [
+        "b-|a t1", "a-|c t2", "b-|-c t3", "c-|->e t4", "e-|>f more text",
+        "e|->d t6", "c-g", "f-h", "g<->h 3 ms"
+]}
+</script>
+</div>
+</section>
+</section>
+<section id="step-9-some-code">
+<h2>Step 9. Some code<a class="headerlink" href="#step-9-some-code" title="Link to this heading"></a></h2>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+(function (bits, ticks) {
+    var i, t, gray, state, data = [], arr = [];
+    for (i = 0; i < bits; i++) {
+        arr.push({"name": i + '', "wave": ''});
+        state = 1;
+        for (t = 0; t < ticks; t++) {
+            data.push(t + '');
+            gray = (((t >> 1) ^ t) >> i) & 1;
+            arr[i].wave += (gray === state) ? '.' : gray + '';
+            state = gray;
+        }
+    }
+    arr.unshift('gray');
+    return {"signal": [
+        {"name": 'bin', "wave": '='.repeat(ticks), "data": data}, arr
+    ]};
+})(5, 16)
+</script>
+</div>
+</section>
+<section id="step-10-from-file">
+<h2>Step 10. From file<a class="headerlink" href="#step-10-from-file" title="Link to this heading"></a></h2>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+    { "name": "A", "wave": "01..0..",  "node": ".a..e.." },
+    { "name": "B", "wave": "0.1..0.",  "node": "..b..d.", "phase":0.5 },
+    { "name": "C", "wave": "0..1..0",  "node": "...c..f" },
+    {                              "node": "...g..h" }
+],
+"edge": [
+    "b-|a t1", "a-|c t2", "b-|-c t3", "c-|->e t4", "e-|>f more text",
+    "e|->d t6", "c-g", "f-h", "g<->h 3 ms"
+]}
+
+</script>
+</div>
+</section>
+<section id="step-11-figure">
+<h2>Step 11. Figure<a class="headerlink" href="#step-11-figure" title="Link to this heading"></a></h2>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "signal": [
+    { "name": "A", "wave": "01..0..",  "node": ".a..e.." },
+    { "name": "B", "wave": "0.1..0.",  "node": "..b..d.", "phase":0.5 },
+    { "name": "C", "wave": "0..1..0",  "node": "...c..f" },
+    {                              "node": "...g..h" }
+],
+"edge": [
+    "b-|a t1", "a-|c t2", "b-|-c t3", "c-|->e t4", "e-|>f more text",
+    "e|->d t6", "c-g", "f-h", "g<->h 3 ms"
+]}
+
+</script>
+</div>
+</section>
+<section id="register">
+<h2>Register<a class="headerlink" href="#register" title="Link to this heading"></a></h2>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{ "reg": [
+  { "name": "IPO",   "bits": 8, "attr": "RO" },
+  {                  "bits": 7 },
+  { "name": "BRK",   "bits": 5, "attr": "RW", "type": 1 },
+  { "name": "CPK",   "bits": 1 },
+  { "name": "Clear", "bits": 3 },
+  { "bits": 8 }
+]}
+</script>
+</div>
+</section>
+</section>
+
+    <script type="text/javascript">
+        function init() {
+            WaveDrom.ProcessAll();
+        }
+        window.onload = init;
+    </script>
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plantuml_example.html" class="btn btn-neutral float-left" title="PlantUML Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tools.html" class="btn btn-neutral float-right" title="Tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Eyal Royee.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
